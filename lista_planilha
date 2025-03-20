@@ -1,0 +1,18 @@
+from google.colab import files
+import pandas as pd
+
+upload=files.upload()
+
+df=pd.read_excel(next(iter(upload)))
+df.head()
+print(df)
+
+--------------------------------------------
+from google.colab import files
+import matplotlib.pyplot as plt
+import pandas as pd
+
+upload=files.upload()
+
+df=pd.read_excel("tabela_dados.xlsx")
+df.head()
