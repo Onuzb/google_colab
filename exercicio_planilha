@@ -1,0 +1,51 @@
+Qual é a distribuição de frequência das idades na amostra?
+import matplotlib.pyplot as plt
+plt.hist(df["Idade"], bins=10, edgecolor="black")
+plt.xlabel("Idade")
+plt.ylabel("Frequência")
+plt.title("Distribuição de Idades na Amostra")
+plt.show()
+___________________________________________________________________________
+Qual a média, mediana e desvio padrão das idades por grupo de escolaridade?
+import matplotlib.pyplot as plt
+df.groupby("Escolaridade")["Idade"].agg(["mean", "median", "std"])
+___________________________________________________________________________
+Qual a proporção de cada sexo na amostra?
+import matplotlib.pyplot as plt
+df["Sexo"].value_counts(normalize=True) * 100
+___________________________________________________________________________
+Qual a distribuição dos torcedores por time de futebol?
+import matplotlib.pyplot as plt
+df["Time de Futebol"].value_counts().plot(kind="bar", figsize=(10,5),
+color="blue", edgecolor="black")
+plt.xlabel("Time de Futebol")
+plt.ylabel("Número de Torcedores")
+plt.title("Distribuição de Torcedores por Time")
+plt.xticks(rotation=45)
+plt.show()
+___________________________________________________________________________
+Qual o time de futebol com maior representação entre os indivíduos com escolaridade superior?
+import matplotlib.pyplot as plt
+df[df["Escolaridade"] == "Superior"]["Time de Futebol"].value_counts()
+___________________________________________________________________________
+Há diferença significativa na idade média entre os sexos?
+import matplotlib.pyplot as plt
+df.groupby("Sexo")["Idade"].mean()
+___________________________________________________________________________
+Qual a relação entre escolaridade e a escolha do time de futebol?
+import matplotlib.pyplot as plt
+pd.crosstab(df["Escolaridade"], df["Time de Futebol"], margins=True)
+___________________________________________________________________________
+Quais os grupos com maior diversidade de times de futebol preferidos?
+import matplotlib.pyplot as plt
+df.groupby("Escolaridade")["Time de Futebol"].nunique()
+___________________________________________________________________________
+Existe uma relação entre sexo e time de futebol escolhido?
+import matplotlib.pyplot as plt
+pd.crosstab(df["Sexo"], df["Time de Futebol"], margins=True)
+___________________________________________________________________________
+Qual a escolaridade mais comum entre os torcedores do time mais popular da amostra?
+import matplotlib.pyplot as plt
+time_mais_popular = df["Time de Futebol"].value_counts().idxmax()
+df[df["Time de Futebol"] ==
+time_mais_popular]["Escolaridade"].value_counts()
