@@ -1,0 +1,40 @@
+import random
+
+def jogar_termo():
+    """
+    Jogo Termo: Tente adivinhar a palavra de 5 letras em 6 tentativas.
+    """
+
+    palavras = ["sagaz", "âmago", "êxito", "mexer", "termo", "nobre", "algoz", "plena", "ética", "fútil", "tenaz", "assim", "vigor", "lapso", "sutil", "aquém", "audaz", "porém", "sanar", "seção", "inato", "cerne", "ideia", "desde", "fosse"]
+
+    palavra_secreta = random.choice(palavras)
+
+    tentativas_maximas = 6
+
+    for tentativa in range(1, tentativas_maximas + 1):
+        palavra_jogador = input(f"\nTentativa {tentativa}/{tentativas_maximas}: Digite uma palavra de 5 letras: ").lower()
+
+        if len(palavra_jogador) != 5:
+            print("Palavra inválida! Digite uma palavra com 5 letras.")
+            continue
+
+        if palavra_jogador == palavra_secreta:
+            print(f"Parabéns! Você acertou a palavra em {tentativa} tentativa(s)!")
+            break
+
+        dicas = ""
+        for i in range(5):
+            if palavra_jogador[i] == palavra_secreta[i]:
+                dicas += palavra_jogador[i].upper()
+            elif palavra_jogador[i] in palavra_secreta:
+                dicas += palavra_jogador[i].lower() 
+            else:
+                dicas += "_" 
+
+        print("Dicas:", dicas)
+
+    else:
+        print(f"\nVocê perdeu! A palavra secreta era: {palavra_secreta}")
+
+if __name__ == "__main__":
+    jogar_termo()
