@@ -1,2 +1,2 @@
 # google_colab
-Códigos feitos no Google Colab
+Codes made on Google Colab
